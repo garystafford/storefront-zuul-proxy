@@ -8,4 +8,4 @@ RUN set -ex \
 RUN mkdir /storefront
 COPY /build/libs/*.jar /storefront/zuul.jar
 WORKDIR /storefront
-CMD ["java", "-jar", "-Djava.security.egd=file:/dev/./urandom", "zuul.jar"]
+CMD ["java", "-jar", "-Djava.security.egd=file:/dev/./urandom", "-Dspring.profiles.active=docker", "zuul.jar"]
