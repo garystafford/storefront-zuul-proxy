@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/storefront-zuul-proxy.iml" filepath="$PROJECT_DIR$/storefront-zuul-proxy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/storefront-zuul-proxy_main.iml" filepath="$PROJECT_DIR$/.idea/modules/storefront-zuul-proxy_main.iml" group="storefront-zuul-proxy" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/storefront-zuul-proxy_test.iml" filepath="$PROJECT_DIR$/.idea/modules/storefront-zuul-proxy_test.iml" group="storefront-zuul-proxy" />
+    </modules>
+  </component>
+</project>
