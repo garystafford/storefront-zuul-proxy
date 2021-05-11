@@ -10,7 +10,7 @@
         <module name="zuul-proxy.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="11">
+    <bytecodeTargetLevel target="1.8">
       <module name="storefront-zuul-proxy_main" target="1.8" />
       <module name="storefront-zuul-proxy_test" target="1.8" />
     </bytecodeTargetLevel>

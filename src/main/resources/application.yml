@@ -16,19 +16,19 @@ zuul:
   host:
     connect-timeout-millis: 30000
     socket-timeout-millis: 30000
-#  routes:
-#    accounts:
-#      path: /accounts/**
-#      serviceId: accounts
-#      stripPrefix: true
-#    orders:
-#      path: /orders/**
-#      serviceId: orders
-#      stripPrefix: true
-#    fulfillment:
-#      path: /fulfillment/**
-#      serviceId: fulfillment
-#      stripPrefix: true
+  routes:
+    accounts:
+      path: /accounts/**
+      serviceId: accounts
+      stripPrefix: true
+    orders:
+      path: /orders/**
+      serviceId: orders
+      stripPrefix: true
+    fulfillment:
+      path: /fulfillment/**
+      serviceId: fulfillment
+      stripPrefix: true
 #ribbon:
 #  ConnectTimeout: 3000
 #  ReadTimeout: 60000
