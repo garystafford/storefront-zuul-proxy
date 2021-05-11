@@ -6,17 +6,32 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
-security:
-  basic:
-    enable: false
+      defaultZone: http://eureka:8761/eureka/
+    registerWithEureka: false
+    fetchRegistry: true
+#security:
+#  basic:
+#    enable: false
 zuul:
   host:
     connect-timeout-millis: 30000
     socket-timeout-millis: 30000
-ribbon:
-  ConnectTimeout: 3000
-  ReadTimeout: 3000
+#  routes:
+#    accounts:
+#      path: /accounts/**
+#      serviceId: accounts
+#      stripPrefix: true
+#    orders:
+#      path: /orders/**
+#      serviceId: orders
+#      stripPrefix: true
+#    fulfillment:
+#      path: /fulfillment/**
+#      serviceId: fulfillment
+#      stripPrefix: true
+#ribbon:
+#  ConnectTimeout: 3000
+#  ReadTimeout: 60000
 management:
   endpoints:
     web:
@@ -26,14 +41,10 @@ logging:
   level:
     root: DEBUG
 ---
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://eureka:8761/eureka/
 logging:
   level:
     root: INFO
 spring:
   config:
     activate:
-      on-profile:
+      on-profile: gke
