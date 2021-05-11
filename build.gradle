@@ -1,44 +1,54 @@
-buildscript {
-    ext {
-        springBootVersion = '2.0.3.RELEASE'
-    }
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+plugins {
+    id 'com.github.ben-manes.versions' version '0.38.0'
+    id 'org.springframework.boot' version '2.4.5'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'idea'
+}
+
+sourceCompatibility = '11'
+
+def major = '3'
+def minor = '0'
+def patch = System.env.BUILD_NUMBER ?: '0'
+version = major + '.' + minor + '.' + patch
+
+bootJar {
+    launchScript()
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
-
-group = 'com.storefront'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
+ext {
+    set('springCloudVersion', '2020.0.2')
+    set('springBootVersion', '2.4.5')
+    set('springCloudEureka', '3.0.2')
+    set('springCloudZuul', '2.2.8.RELEASE')
+}
 
 repositories {
     mavenCentral()
-    maven { url "https://repo.spring.io/milestone" }
-}
-
-
-ext {
-    springCloudVersion = 'Finchley.RC2'
-}
-
-dependencies {
-    compile('org.springframework.boot:spring-boot-starter-hateoas')
-    compile('org.springframework.boot:spring-boot-starter-actuator')
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-zuul')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
+}
+
+dependencies {
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-hateoas:${springBootVersion}"
+    implementation "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:${springCloudEureka}"
+    implementation "org.springframework.cloud:spring-cloud-starter-netflix-zuul:${springCloudZuul}"
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+}
+
+test {
+    useJUnitPlatform()
 }
