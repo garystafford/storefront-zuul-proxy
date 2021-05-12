@@ -6,7 +6,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://eureka:8761/eureka
 security:
   basic:
     enable: false
@@ -25,13 +25,3 @@ management:
 logging:
   level:
     root: DEBUG
----
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://eureka:8761/eureka/
-spring:
-  profiles: docker
-logging:
-  level:
-    root: INFO
